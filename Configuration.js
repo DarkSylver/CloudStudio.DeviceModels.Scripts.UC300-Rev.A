@@ -13,45 +13,7 @@ function getConfiguration(config) {
 
 function getEndpoints(deviceAddress, endpoints) {
 
-    var s11 = endpoints.addEndpoint("1", "Sensor 1 - PH", endpointType.genericSensor);
-    s11.variableTypeId = 1373;
-
-    var s12 = endpoints.addEndpoint("2", "Sensor 1 - Moisture", endpointType.humiditySensor);
-
-    endpoints.addEndpoint("3", "Sensor 1 - Temperature", endpointType.temperatureSensor);
-    
-    var s14 = endpoints.addEndpoint("4", "Sensor 1 - Conductivity", endpointType.genericSensor);
-    s14.variableTypeId = 1374;
-
-    var s15 = endpoints.addEndpoint("5", "Sensor 1 - Nitrogen", endpointType.genericSensor);
-    s15.variableTypeId = 1375;
-
-    var s16 = endpoints.addEndpoint("6", "Sensor 1 - Phosphorus", endpointType.genericSensor);
-    s16.variableTypeId = 1375;
-
-    var s17 = endpoints.addEndpoint("7", "Sensor 1 - Potassium", endpointType.genericSensor);
-    s17.variableTypeId = 1375;
-
-     var s21 = endpoints.addEndpoint("8", "Sensor 2 - PH", endpointType.genericSensor);
-    s21.variableTypeId = 1373;
-
-    var s22 = endpoints.addEndpoint("9", "Sensor 2 - Moisture", endpointType.humiditySensor);
-
-    endpoints.addEndpoint("10", "Sensor 2 - Temperature", endpointType.temperatureSensor);
-    
-    var s24 = endpoints.addEndpoint("11", "Sensor 2 - Conductivity", endpointType.genericSensor);
-    s24.variableTypeId = 1374;
-
-    var s25 = endpoints.addEndpoint("12", "Sensor 2 - Nitrogen", endpointType.genericSensor);
-    s25.variableTypeId = 1375;
-
-    var s26 = endpoints.addEndpoint("13", "Sensor 2 - Phosphorus", endpointType.genericSensor);
-    s26.variableTypeId = 1375;
-
-    var s27 = endpoints.addEndpoint("14", "Sensor 2 - Potassium", endpointType.genericSensor);
-    s27.variableTypeId = 1375;
-
-  
+    endpoints.addEndpoint("2", "Temperature", endpointType.temperatureSensor);
 
 }
 
