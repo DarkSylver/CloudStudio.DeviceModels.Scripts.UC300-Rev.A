@@ -2,23 +2,42 @@ function parseUplink(device, payload)
 {
     var payloadb = payload.asBytes();
     var decoded = Decoder(payloadb, device.port)
+    
+    //Canal 1
+    var radiacion = decoded.chn1 * 0.079;
+    env.log("Ilum W/m2:", radiacion);
+    var ep = device.endpoints.byAddress("1");
+    ep.updateGenericSensorStatus(radiacion);
 
-    device.endpoints.byAddress("1").updateGenericSensorStatus(decoded.modbus_chn_1 / 100);
-    device.endpoints.byAddress("2").updateHumiditySensorStatus(decoded.modbus_chn_2 / 10);
-    device.endpoints.byAddress("3").updateTemperatureSensorStatus(decoded.modbus_chn_3 / 10);
-    device.endpoints.byAddress("4").updateGenericSensorStatus(decoded.modbus_chn_4);
-    device.endpoints.byAddress("5").updateGenericSensorStatus(decoded.modbus_chn_5);
-    device.endpoints.byAddress("6").updateGenericSensorStatus(decoded.modbus_chn_6);
-    device.endpoints.byAddress("7").updateGenericSensorStatus(decoded.modbus_chn_7);
+    //Canal 2
+    var temperatura = (decoded.chn2 - 400) / 10;
+    env.log("Temp C.:", temperatura);
+    var ep = device.endpoints.byAddress("2");
+    ep.updateTemperatureSensorStatus(temperatura);
+    
+    //Canal 3
+    var humedad = decoded.chn3;
+    env.log("Hum %:", humedad);
+    var ep = device.endpoints.byAddress("3");
+    ep.updateHumiditySensorStatus(humedad);
 
-    device.endpoints.byAddress("8").updateGenericSensorStatus(decoded.modbus_chn_8 / 100);
-    device.endpoints.byAddress("9").updateHumiditySensorStatus(decoded.modbus_chn_9 / 10);
-    device.endpoints.byAddress("10").updateTemperatureSensorStatus(decoded.modbus_chn_10 / 10);
-    device.endpoints.byAddress("11").updateGenericSensorStatus(decoded.modbus_chn_11);
-    device.endpoints.byAddress("12").updateGenericSensorStatus(decoded.modbus_chn_12);
-    device.endpoints.byAddress("13").updateGenericSensorStatus(decoded.modbus_chn_13);
-    device.endpoints.byAddress("14").updateGenericSensorStatus(decoded.modbus_chn_14);
+    //Canal 4
+    var velviento = decoded.chn4 * 0.36;
+    env.log("Viento km/h:", velviento);
+    var ep = device.endpoints.byAddress("4");
+    ep.updateGenericSensorStatus(velviento);
 
+    //Canal 5
+    var velvientog = decoded.chn5;
+    env.log("Viento (g):", velvientog)
+    var ep = device.endpoints.byAddress("5");
+    ep.updateGenericSensorStatus(velvientog);
+
+    //Canal 6
+    var precipitacion = decoded.chn6 * 0.1;
+    env.log("Precipitacion (mm):", precipitacion);
+    var ep = device.endpoints.byAddress("6");
+    ep.updateGenericSensorStatus(precipitacion);
 
 }
 
